@@ -10,13 +10,13 @@ const Home = () => {
     <div className="home">
       <img src={hero_image} alt="hero-image.png" />
       <section className="menu">
-        <section className="home-calcultor">
+        <section className="submenu">
           <img src={calculator} alt="calculator.png" />
-          <Link exact to="/calcultor">在线计算器</Link>
+          <Link exact className="home-link" to="/calcultor">计算器</Link>
         </section>
-        <section className="home-timer">
+        <section className="submenu">
           <img src={timer} alt="timer.png" />
-          <Link exact to="/timer">在线倒计时器</Link>
+          <Link exact className="home-link" to="/timer">倒计时器</Link>
         </section>
       </section>
     </div>
