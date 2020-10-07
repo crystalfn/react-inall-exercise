@@ -10,11 +10,11 @@
 
 - Task4: 实现在线计算器页面
   - 整体在线计算器页面为父组件；
-  - 输出结果的显示框为子组件1：result-show；
-  - +、-、* 为子组件2：calculte;
-  - 数字按键为子组件3：number;
-  - clear 按键为子组件4：clear;
-  - = 按键为子组件5：output；
+  - 输出结果的显示框：result-show；
+  - +、-、* 为子组件1：calculte;
+  - 数字按键为子组件2：number;
+  - clear 按键：clear;
+  - = 按键：output；
 
 - Task5: 实现在线倒计时器页面
   - 编写 html 代码；
