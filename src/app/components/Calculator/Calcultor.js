@@ -16,29 +16,21 @@ class Calcultor extends Component {
 
   handleCalculte = (event) => {
     const { state } = this;
-    const { resultShow } = state;
+    const { resultShow, symbol } = state;
 
-    this.setState({
-      symbol: event.target.value,
-      resultShow: resultShow + event.target.value,
-    });
+    if (symbol !== "") {
+      this.handleClear();
+    } else {
+      this.setState({
+        symbol: event.target.value,
+        resultShow: resultShow + event.target.value,
+      });
+    }
   };
 
   handleAddNumber = (event) => {
     const { state } = this;
     const { resultShow, numberFirst, numberSecond, symbol } = state;
-
-    if (symbol === "") {
-      const temp = parseInt(numberFirst + event.target.value);
-      this.setState({
-        numberFirst: temp,
-      });
-    } else {
-      const temp = parseInt(numberSecond + event.target.value);
-      this.setState({
-        numberSecond: temp,
-      });
-    }
 
     if (resultShow === "0") {
       this.setState({
@@ -47,6 +39,23 @@ class Calcultor extends Component {
     } else {
       this.setState({
         resultShow: resultShow + event.target.value,
+      });
+    }
+
+    if (symbol === "") {
+      this.changeNumber("numberFirst", numberFirst, event.target.value);
+    } else {
+      this.changeNumber("numberSecond", numberSecond, event.target.value);
+    }
+  };
+
+  changeNumber = (field, number, value) => {
+    let temp = number === 0 ? value : number + value;
+    if (temp.length > 2) {
+      this.handleClear();
+    } else {
+      this.setState({
+        [field]: parseInt(temp),
       });
     }
   };
@@ -89,6 +98,7 @@ class Calcultor extends Component {
 
           <section className="calculator-board">
             <div className="result-show">{this.state.resultShow}</div>
+
             <section className="buttons">
               {this.state.calcultes.map((item, index) => (
                 <Calculate
@@ -97,6 +107,7 @@ class Calcultor extends Component {
                   calculate={this.handleCalculte.bind(this)}
                 />
               ))}
+
               {this.state.numbers.map((item, index) => (
                 <Number
                   key={index}
@@ -104,9 +115,11 @@ class Calcultor extends Component {
                   addNumber={this.handleAddNumber.bind(this)}
                 />
               ))}
+
               <button className="clear" onClick={this.handleClear}>
                 clear
               </button>
+
               <button className="output" onClick={this.handleOutput}>
                 =
               </button>
