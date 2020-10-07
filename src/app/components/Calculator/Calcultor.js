@@ -10,49 +10,8 @@ class Calcultor extends Component {
     numberFirst: 0,
     numberSecond: 0,
     symbol: "",
-    calcultes: [
-      {
-        value: " + ",
-      },
-      {
-        value: " - ",
-      },
-      {
-        value: " x ",
-      },
-    ],
-    numbers: [
-      {
-        value: "7",
-      },
-      {
-        value: "8",
-      },
-      {
-        value: "9",
-      },
-      {
-        value: "4",
-      },
-      {
-        value: "5",
-      },
-      {
-        value: "6",
-      },
-      {
-        value: "1",
-      },
-      {
-        value: "2",
-      },
-      {
-        value: "3",
-      },
-      {
-        value: "0",
-      },
-    ],
+    calcultes: [" + ", " - ", " x "],
+    numbers: ["7", "8", "9", "4", "5", "6", "1", "2", "3", "0"],
   };
 
   handleCalculte = (event) => {
@@ -92,6 +51,15 @@ class Calcultor extends Component {
     }
   };
 
+  handleClear = () => {
+    this.setState({
+      resultShow: "0",
+      numberFirst: 0,
+      numberSecond: 0,
+      symbol: "",
+    });
+  };
+
   handleOutput = () => {
     const { state } = this;
     const { numberFirst, numberSecond, symbol } = state;
@@ -125,18 +93,20 @@ class Calcultor extends Component {
               {this.state.calcultes.map((item, index) => (
                 <Calculate
                   key={index}
-                  value={item.value}
+                  value={item}
                   calculate={this.handleCalculte.bind(this)}
                 />
               ))}
               {this.state.numbers.map((item, index) => (
                 <Number
                   key={index}
-                  value={item.value}
+                  value={item}
                   addNumber={this.handleAddNumber.bind(this)}
                 />
               ))}
-              <button className="clear">clear</button>
+              <button className="clear" onClick={this.handleClear}>
+                clear
+              </button>
               <button className="output" onClick={this.handleOutput}>
                 =
               </button>
