@@ -3,6 +3,29 @@ import { Link } from "react-router-dom";
 import "./timer.less";
 
 class Timer extends Component {
+  state = {
+    countNumber: 0,
+  };
+
+  handleTimer = () => {
+    let count = parseInt(document.getElementById("count").value);
+    this.setState({
+      countNumber: count,
+    });
+    console.log(count);
+
+    const timer = setInterval(() => {
+      if (count > 0) {
+        count--;
+        this.setState({
+          countNumber: count,
+        });
+      } else {
+        clearInterval(timer);
+      }
+    }, 1000);
+  };
+
   render() {
     return (
       <div className="timer">
@@ -12,12 +35,17 @@ class Timer extends Component {
             <section className="setting">
               <div className="time-input">
                 <label>设置时间</label>
-                <input placeholder="请输入设置的倒计时时间！"></input>
+                <input
+                  id="count"
+                  placeholder="请输入设置的倒计时时间！"
+                ></input>
               </div>
-              <button>Start</button>
+              <button onClick={this.handleTimer}>Start</button>
             </section>
             <section className="count-down">
-              <p><span>Seconds</span></p>
+              <p>
+                <span>{this.state.countNumber} Seconds</span>
+              </p>
             </section>
           </section>
           <p>
