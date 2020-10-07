@@ -3,10 +3,10 @@ import "./number.less"
 
 class Number extends Component {
   render() {
-    const { value } = this.props
+    const { value, addNumber } = this.props
 
     return (
-    <button className="number">{value}</button>
+    <button className="number" value={value} onClick={addNumber}>{value}</button>
     );
   }
 }
