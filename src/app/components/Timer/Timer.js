@@ -10,14 +10,14 @@ class Timer extends Component {
           <h1>在线倒计时器</h1>
           <section className="timer-board">
             <section className="setting">
-              <div>
+              <div className="time-input">
                 <label>设置时间</label>
                 <input placeholder="请输入设置的倒计时时间！"></input>
               </div>
               <button>Start</button>
             </section>
             <section className="count-down">
-              <p>Seconds</p>
+              <p><span>Seconds</span></p>
             </section>
           </section>
           <p>

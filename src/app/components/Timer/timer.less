@@ -8,7 +8,7 @@
     width: 956px;
     height: 100%;
     background-color: #f1f1f1;
-    padding: 0 50px 50px 50px;
+    padding: 0 50px;
     box-sizing: border-box;
 
     h1 {
@@ -23,15 +23,69 @@
 
       .setting {
         width: 378px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .time-input {
+          label {
+            display: inline-block;
+            text-align: left;
+            color: #555;
+            font-weight: bold;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+          }
+
+          input {
+            display: inline-block;
+            box-sizing: border-box;
+            height: 35px;
+            line-height: 35px;
+            width: 200px;
+            border: 1px solid #ccc;
+          }
+        }
+
+        button {
+          border: 0;
+          outline: none;
+          background-color: #00aeed;
+          color: #fff;
+          margin-top: 30px;
+          width: 300px;
+          height: 40px;
+          font-size: 16px;
+          cursor: pointer;
+        }
       }
 
       .count-down {
         width: 478px;
+        padding: 20px 0;
+        box-sizing: border-box;
+
+        p {
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          border: 1px solid #555;
+          font-size: 50px;
+          height: 100px;
+          line-height: 100px;
+          color: #555;
+
+          span {
+            display: inline-block;
+          }
+        }
       }
     }
 
     p {
       display: flex;
+      margin: 100px 0;
 
       .back-home {
         color: #555;
